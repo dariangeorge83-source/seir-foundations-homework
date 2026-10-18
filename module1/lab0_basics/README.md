@@ -8,11 +8,11 @@ During class I was in and out because of work, so I followed the repo instructio
 
 ## Evidence table
 
-| Deployment | Instance ID | Public IPv4 address | Connection method | Screenshot | Instance terminated? |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-| 1 | i-038741a88aa9c8e0d | 3.17.146.178 | SSH from Mac Terminal | screenshots/deployment-1.png | Yes |
-| 2 | i-096a141db99296813 | 18.222.131.104 | SSH from Mac Terminal | screenshots/deployment-2.png | Yes |
-| 3 | i-0f85fb2debafbfd11 | 3.145.145.194 | EC2 Instance Connect (browser) | screenshots/deployment-3.png | Yes |
+| Deployment | Public IPv4 address | Connection method | Screenshot | Instance terminated? |
+| :---- | :---- | :---- | :---- | :---- |
+| 1 | 3.17.146.178 | SSH from Mac Terminal | screenshots/deployment-1.png | Yes |
+| 2 | 18.222.131.104 | SSH from Mac Terminal | screenshots/deployment-2.png | Yes |
+| 3 | 3.145.145.194 | EC2 Instance Connect (browser) | screenshots/deployment-3.png | Yes |
 
 &nbsp;
 
