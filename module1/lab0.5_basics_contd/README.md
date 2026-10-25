@@ -5,10 +5,13 @@ Student: Darian George
 Homework submission for Basics Continued.
 
 ## Deliverables
-- Group information
-- Maarek Section 5 quiz screenshot
-- Maarek Section 6 quiz screenshot
-  
+
+| Section   | Deliverable                                                                            |
+|-----------|----------------------------------------------------------------------------------------|
+| Section 3 | **No quiz** for this section — no screenshot needed                                    |
+| Section 5 | Screenshot of the **completed Section 5 quiz**, uploaded as [Maarek_Section5_quiz.jpg](screenshots/Maarek_Section5_quiz.jpg) |
+| Section 6 | Screenshot of the **completed Section 6 quiz**, uploaded as [Maarek_Section6_quiz.jpg](screenshots/Maarek_Section6_quiz.jpg) |
+
 ### Extra credit evidence table
 
 | Item    | Requirement                                        | Screenshot                | Done?    |
