@@ -13,7 +13,7 @@ Homework submission for Basics Continued.
 
 | Item    | Requirement                                        | Screenshot                | Done?    |
 |---------|----------------------------------------------------|---------------------------|----------|
-| BAM_1.1 | Local SSH client; `whoami` + `date` visible        | `screenshots/BAM_1.1.jpg` | Yes      |
-| BAM_1.2 | Custom page: thank-you line, dollar line, picture  | `screenshots/BAM_1.2.jpg` | Yes      |
-| BAM_1.3 | Local SSH; `user_data` script displayed with `cat` | `screenshots/BAM_1.3.jpg` | Yes      |
+| BAM_1.1 | Local SSH client; `whoami` + `date` visible        | [BAM_1.1.jpg](screenshots/BAM_1.1.jpg) | Yes      |
+| BAM_1.2 | Custom page: thank-you line, dollar line, picture  | [BAM_1.2.jpg](screenshots/BAM_1.2.jpg) | Yes      |
+| BAM_1.3 | Local SSH; `user_data` script displayed with `cat` | [BAM_1.3.jpg](screenshots/BAM_1.3.jpg) | Yes      |
 
