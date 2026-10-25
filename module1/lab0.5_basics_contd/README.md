@@ -8,6 +8,9 @@ Homework submission for Basics Continued.
 - Group information
 - Maarek Section 5 quiz screenshot
 - Maarek Section 6 quiz screenshot
+  
+### Extra credit evidence table
+
 | Item    | Requirement                                        | Screenshot                | Done?    |
 |---------|----------------------------------------------------|---------------------------|----------|
 | BAM_1.1 | Local SSH client; `whoami` + `date` visible        | `screenshots/BAM_1.1.jpg` | Yes      |
