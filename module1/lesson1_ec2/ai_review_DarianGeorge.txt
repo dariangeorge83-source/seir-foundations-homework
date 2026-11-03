@@ -1,0 +1,73 @@
+AI REVIEW - Balerica Legacy Bank Student Runbook (Lesson 1)
+Student: Darian George
+AI used: Claude (claude.ai)
+
+Real conversation: ai_review_transcript_DarianGeorge.txt (two chats: "Scaffold for assignment," Oct 30-31, and "Homework run 4 with whoami," Nov 1). All five questions below come from those chats. I did not paste any keys, passwords or tokens into a prompt.
+
+==========================================================================
+QUESTION 1 - "ec2-metadata is missing and doesn't show Taipei time. How do I make sure it shows that?" (Oct 31, 12:09)
+==========================================================================
+AI's answer, in my words:
+Claude gave me two fixes. For the missing tool, install `ec2-utils` and run `ec2-metadata -i`. For Taipei time, the server stays in UTC, and `TZ='Asia/Taipei'` placed before `date` converts only that one command, so `uptime -s` stays in UTC for the boot-time column.
+
+How I checked it:
+I ran `sudo dnf install -y ec2-utils`, and dnf said the package was already installed, and `ec2-metadata -i` printed my instance ID (i-09aaec9b88f188650). So the tool was never missing. Then the full ID line printed four lines in lab1_run1.jpg: the user (ec2-user), a date ending in CST that was 8 hours ahead of the UTC boot time, the instance ID, and the boot time (2026-10-31 03:57:06). I compared the CST time with my own clock to confirm it matched Taipei.
+
+Where the AI was wrong or vague:
+Claude's first answer assumed `ec2-metadata` was missing. The real cause was junk characters (`[200~`) from pasting into my terminal, which glued two commands together. Claude only saw that after I pasted my terminal output, and then it gave the right fix.
+
+==========================================================================
+QUESTION 2 - "Do I need to screenshot the /docs page in the browser?" (Oct 31, 12:32)
+==========================================================================
+AI's answer, in my words:
+No. The `/docs` page is Step 7 of the runbook, the assignment doesn't list a screenshot for it, and every screenshot has to show the ID line, which a browser page can't. The page was still useful because the address bar gave me the Public IPv4 DNS for the README table.
+
+How I checked it:
+I read the Week 3 assignment text. Every screenshot must show the ID line, and lab1_run1.jpg must show the ID line output and "Application startup complete." together. The browser page shows neither. I also copied the DNS from the address bar (ec2-18-234-234-41.compute-1.amazonaws.com) and it matched the instance I launched.
+
+==========================================================================
+QUESTION 3 - "Should I run these commands one at a time or all at once?" and "Why won't clear work?" (Oct 31, 12:34-12:37)
+==========================================================================
+AI's answer, in my words:
+Run them one at a time and read each result. When `clear` and Ctrl+L didn't work, Claude explained that uvicorn was still running and holding the terminal, so what I typed never ran. The fix was Ctrl+C, then `clear`, the ID line, and `uvicorn` again, with the ID line close above the uvicorn output.
+
+How I checked it:
+I tried `clear` and Ctrl+L while uvicorn was running and neither worked, which matched the explanation. After Ctrl+C I got my prompt back and the commands ran. My new screenshot then showed the ID line followed by "Application startup complete.", and Claude confirmed it met the requirements.
+
+==========================================================================
+QUESTION 4 - "The instructions say to open a new terminal window, or doesn't matter?" (Oct 31, 12:46-12:47)
+==========================================================================
+AI's answer, in my words:
+Claude said it doesn't matter for the screenshots, as long as the ID line is visible in each one. The runbook's Step 5 uses a second window because the server has to keep running while I `curl` it. Claude recommended stopping the server and staying in one window to keep screenshots clean, but I explained that I wanted to follow the runbook's flow because I might be asked to do this live in class. Claude agreed and gave me a Window 1 / Window 2 plan: leave uvicorn running in Window 1, then open a second terminal tab, SSH in again, `cd /opt/balerica-bank`, and run the ID line and my commands there.
+
+How I checked it:
+I read the runbook's Step 5, which uses a second window for `curl` while the server runs. I then used two windows for Step 5 and for the steps after it, with the server staying up in Window 1 while I worked in Window 2.
+
+Why this matters to me:
+In a real job, or in a live class demo, I can't stop a running server just to type another command. I need to know how to keep a service running in one terminal and work in another in real time, and how to tell which window I'm in.
+
+Where the AI was vague:
+Claude's first answer was a convenience default (one window, stop the server) that didn't match the runbook's intended flow or my goal of practicing it live. It changed its advice once I gave my reason.
+
+==========================================================================
+QUESTION 5 - "What does 404 Not Found in my uvicorn log mean for me?" (Nov 1, 11:28)
+==========================================================================
+AI's answer, in my words:
+Nothing is wrong. My browser automatically asks every site for a tab icon at `/favicon.ico`, the app has no route for it, so it returns 404. The real results are the 200 OK lines for `/`, `/docs` and `/openapi.json`. Claude also said 4xx means a client-side problem and that this HTTP code is separate from the COBOL return codes.
+
+How I checked it:
+I looked at the same log. Right after the 404, the `/docs` and `/openapi.json` requests both returned 200 OK, and the `/docs` page loaded in my browser. I also saw that the 404 was for `/favicon.ico` only, not for a page I needed. The log's IP matched my own, which showed my browser reached port 8000.
+
+==========================================================================
+WHERE THE AI OR THE RUNBOOK WAS WRONG, VAGUE, OR OUT OF DATE
+==========================================================================
+1. Wrong - Question 1: Claude first assumed `ec2-metadata` was missing. The real cause was paste garbage (`[200~`), which it only saw after I pasted my terminal output.
+
+2. Out of date - the runbook: I pasted the runbook's "Student Challenge" about enabling a Claude model on the Bedrock Model Access page and setting `BEDROCK_MODEL_ID` (Oct 31, 12:58). Claude explained that the Model Access page has been retired, models are on by default, and Claude needs a one-time usage form. It also said the instance needs an IAM role with Bedrock access (no access keys on the instance), `AWS_REGION` set to us-east-1, and `BEDROCK_MODEL_ID` set to the inference profile ID that starts with `us.`, and it would not invent a profile ID from memory. I checked this against the Week 3 assignment's extra-credit text (BAM_2.1), which says the same things. So the runbook was out of date and the assignment was right.
+
+3. Invented details - Run 4 notes (Nov 1, 09:57-09:58): after I sent my Run 4 details, Claude drafted my entry and wrote "I hit no errors this run" and a pip command I had never given it. I then gave it my real command, `/opt/balerica-bank/venv/bin/python3 -m pip install --upgrade pip`, and it explained that calling pip through the venv's own Python upgrades the venv's pip. I checked each sentence against what I actually did and replaced the guessed parts with the real ones.
+
+==========================================================================
+OVERALL LESSON
+==========================================================================
+Claude was most useful when I pasted exact terminal output or screenshots, because it could reason from evidence. It was least reliable when it guessed (the missing ec2-metadata tool, my pip command, my class rules). The lesson was to prompt with specific details and to check each answer against a real output, the assignment text, or the runbook.

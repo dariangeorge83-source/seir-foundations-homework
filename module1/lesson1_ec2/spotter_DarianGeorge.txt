@@ -1,0 +1,33 @@
+SPOTTER FILE - Darian George
+
+=== Part 1: My Spotter ===
+Spotter: Ros Bailey
+
+Five specific things Ros learned (from Ros's second half):
+
+1. Provisioning and managing fresh EC2 instances from scratch: I learned how to deploy brand-new instances running Amazon Linux 2023 in AWS (us-east-1), manage local instance lifecycles manually, and avoid relying on automated templates.
+
+2. Mastering package managers and command line flags: I learned how AWS package management works using dnf (Danified Yum), understanding that it installs pre-approved software from trusted vendors, and using the -y flag to automatically answer "yes" to installation prompts.
+
+3. Understanding superuser permissions and root access: I learned how sudo stands for "superuser do" and why it is necessary to temporarily elevate permissions to install system packages and modify protected directories.
+
+4. Understanding instance classes, families, sizes, and generations: I learned how AWS hardware is categorized into instance types and generations, specifically focusing on selecting the right instance size to meet specific memory requirements like having 2 GB of RAM.
+
+5. SQL and NoSQL database use cases and scaling logic: I learned how SQL's strict structure fits reliable financial transactions (like banking ledgers), while NoSQL is better suited for unstructured media catalogs (like Spotify) to eliminate the heavy CPU costs and complex JOIN queries required to link artists, tracks, videos, and albums.
+
+=== Part 2: Person I Spot For ===
+Person: Ros Bailey
+
+Five things I learned and shared with Ros:
+
+1. SSH Connections: Learned how to secure private keys using `chmod 400` and connect to EC2 instances through SSH.
+
+2. Time Zones and Metadata: Learned how to verify EC2 instance IDs, UTC boot times, and Taiwan local time using Linux commands.
+
+3. COBOL Return Codes: Learned how return codes 0, 4, 8, and 12 represent success, account errors, business rejections, and environmental failures.
+
+4. Python Package Management: Learned to update `pip` during Python environment setup and how software updates can help address known security vulnerabilities.
+
+5. Git and GitHub: Learned how to clone a GitHub repository onto an EC2 instance and verify its contents using `ls -la`.
+
+(Cross-check: my Part 1 should match Ros's Part 2, and my Part 2 should match Ros's Part 1.)
