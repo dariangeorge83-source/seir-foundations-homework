@@ -1,0 +1,86 @@
+SEIR FOUNDATIONS - AI-ENABLED STUDY LAB 1.0
+Research Write-Ups
+Prepared: November 3, 2026
+AI research and writing assistance: OpenAI (ChatGPT, GPT-6), 2026
+
+Each section contains a research paragraph, followed by the assigned reading, video, and AI source. Historical figures and numerical claims are attributed to a source and year. The paragraphs are based on my original summaries, revised for clarity and technical accuracy with OpenAI (ChatGPT).
+
+======================================================================
+1. DATABASES
+======================================================================
+
+Relational databases, commonly called SQL databases, use Structured Query Language (SQL) to manage and retrieve data. They have a more rigid structure with predefined schemas and follow ACID principles: atomicity, consistency, isolation, and durability, which help maintain data integrity. Relational databases organize information into rows and columns and use primary keys and foreign keys to identify records and establish relationships between tables. Common examples include MySQL, PostgreSQL, and Microsoft SQL Server. NoSQL, or non-relational databases, offer greater flexibility and can manage structured, semi-structured, and unstructured data. Many NoSQL databases use a consistency model called BASE, which stands for Basically Available, Soft State, and Eventually Consistent, although some also support ACID transactions. NoSQL databases are useful for applications involving social media, frequently changing data, and large amounts of information. In cloud environments, SQL databases are often preferred when strong consistency and complex relationships are necessary, while NoSQL databases are useful when flexibility and scalability are priorities. PostgreSQL is a widely used open-source relational database known for its reliability, advanced features, and extensibility, although scaling and managing it across multiple servers can be more complex.
+
+Reading: AWS, "Relational vs. Non-relational Databases" (undated; accessed 2026)
+https://aws.amazon.com/compare/the-difference-between-relational-and-non-relational-databases/
+Video: IBM Technology, "SQL vs. NoSQL" (publication year not verified)
+https://www.youtube.com/watch?v=Q5aTUc7c4jg
+AI: OpenAI (ChatGPT, GPT-6), 2026. Research, concept checking, and writing revision.
+
+======================================================================
+2. COBOL
+======================================================================
+
+COBOL, which stands for Common Business-Oriented Language, was developed in 1959 through an effort supported by the U.S. Department of Defense and the Conference on Data Systems Languages (CODASYL) to standardize different programming languages used for business applications ("Early Meetings of the Conference on Data Systems Languages," 1985). COBOL is often described as "verbose," meaning it uses more words and longer instructions than many other programming languages. Despite this, COBOL became widely adopted, and by 1970 it was considered the most widely used programming language in the world (Beyer, 2009). COBOL continues to play an important role in financial institutions, government agencies, and other organizations operating legacy systems. Its continued use is not simply because these industries are slow to adapt to newer technology, but also because COBOL has proven reliable for processing large volumes of business transactions. In 1997, Gartner was reported to have estimated that approximately 80% of global business applications ran on COBOL; this is a historical estimate, not a current measurement (Robinson, 2009). A survey by Vanson Bourne commissioned by Micro Focus estimated that between 775 billion and 850 billion lines of COBOL code were in daily use worldwide in 2022; this is a survey-based industry estimate rather than a direct count (Vanson Bourne / Micro Focus, 2022). This demonstrates how deeply COBOL remains integrated into business infrastructure. Replacing these systems can be expensive, complicated, and risky because they support critical daily operations and can contain decades of specialized business rules. An authoritative, current worldwide average age of COBOL engineers is not established by these sources, so no specific average is claimed.
+
+Reading: Wikipedia, "COBOL" (accessed 2026)
+https://en.wikipedia.org/wiki/COBOL
+Video: Fireship, "COBOL in 100 Seconds" (publication year not verified)
+https://www.youtube.com/watch?v=7d7-etf-wNI
+AI: OpenAI (ChatGPT, GPT-6), 2026. Research, concept checking, and writing revision.
+Historical references:
+- "Early Meetings of the Conference on Data Systems Languages," IEEE Annals of the History of Computing 7(4), 1985. https://doi.org/10.1109/MAHC.1985.10047
+- Kurt Beyer, Grace Hopper and the Invention of the Information Age, MIT Press, 2009.
+- Brian Robinson, "Cobol remains old standby at agencies despite showing its age," FCW, July 9, 2009. https://www.nextgov.com/modernization/2009/07/cobol-remains-old-standby-at-agencies-despite-showing-its-age/203338/
+- Vanson Bourne, "Size of COBOL," 2022. https://www.vansonbourne.com/case-studies/size-of-cobol/
+
+======================================================================
+3. SWIFT
+======================================================================
+
+The Society for Worldwide Interbank Financial Telecommunication (SWIFT) is a financial messaging network established in Belgium in 1973 by 239 banks from 15 countries to standardize and improve international banking communications (Swift, "Our Story," accessed 2026). SWIFT is not an actual payment settlement system but a messaging network that allows financial institutions to securely communicate payment instructions. For example, if a customer wants to transfer money from Chase Bank in the United States to MUFG Bank in Japan, the process is relatively straightforward if both banks have an established banking relationship. However, if they do not have a direct relationship, correspondent banks can act as intermediaries to help complete the transaction. These intermediary banks may charge additional fees, and currency conversions can include exchange-rate markups. International transfers can also experience delays because of multiple intermediary banks, different banking hours, weekends, national holidays, and financial regulations. Banks may scrutinize transactions for fraud, money laundering, or sanctions violations, which can delay processing. Although SWIFT remains widely used, alternatives such as China's CIPS and Russia's SPFS have emerged, while BRICS countries have explored additional cross-border payment arrangements; BRICS itself is not a single replacement messaging network. Replacing SWIFT would be challenging because of its extensive global network, established banking relationships, and standardized communication infrastructure. SWIFT has also modernized its messaging standards through ISO 20022, with the coexistence period for traditional MT and ISO 20022 cross-border payment instructions ending on November 22, 2025 (Swift ISO 20022 Implementation FAQs, accessed 2026). Older messages such as MT103 and MT202 correspond in broad payment purpose to newer ISO 20022 messages called pacs.008 and pacs.009, which support richer and more structured payment information; MT202 COV corresponds to pacs.009 COV. Certain contingency conversion and translation services continued after the coexistence deadline, so the change did not mean every MT message type disappeared immediately (Swift, 2026).
+
+Reading: Wikipedia, "SWIFT" (accessed 2026)
+https://en.wikipedia.org/wiki/SWIFT
+Video: a16z, "Foreign Exchange 101" (publication year not verified)
+https://www.youtube.com/watch?v=eoXdyO9oGJc
+AI: OpenAI (ChatGPT, GPT-6), 2026. Research, concept checking, and writing revision.
+Additional verification:
+- Swift, "Our Story" (accessed 2026): https://www.swift.com/ja/node/310207
+- Swift, "ISO 20022: Implementation FAQs" (accessed 2026): https://www.swift.com/standards/iso-20022/iso-20022-faqs/implementation
+
+======================================================================
+4. APIs / REST APIs
+======================================================================
+
+REST API refers to an Application Programming Interface that follows the Representational State Transfer architectural style, described by Roy Fielding in 2000 (Fielding, 2000). REST APIs provide a standardized approach that allows different applications and systems to communicate with each other. REST APIs are designed to be simple, scalable, stateless, and efficient, with caching helping improve performance by reducing unnecessary requests to the server. Stateless means that each request operates independently and contains the information necessary for the server to process it. REST APIs commonly use CRUD operations, which stand for Create, Read, Update, and Delete. These operations are typically performed using HTTP methods such as POST (commonly create), GET (read), PUT (replace or create at a specified URI), PATCH (partially update), and DELETE (remove). Communication involves a client sending a request to a server, which processes it and returns a response, often using JSON (JavaScript Object Notation) to organize the data. Depending on the request, the server may retrieve information from a database, add new information, update an existing record, or delete a resource. For example, an online store could use GET to retrieve product information, POST to add a new product, PUT to replace an existing product's information, or DELETE to remove a discontinued product. REST APIs are widely used in cloud computing and AI adoption because they connect applications, datasets, models, and services without requiring each system to understand the others' internal implementation. Other approaches include SOAP, GraphQL, and gRPC; there is no meaningful verified worldwide count of every system using REST APIs. Securing APIs requires authentication, authorization, encryption, rate limiting, monitoring, and validation of incoming data, since malicious or incorrect requests can expose records or damage data (OWASP API Security Top 10, 2023).
+
+Next-lab preparation: GET requests typically retrieve information and should not change server state; POST requests submit data and often create a resource or trigger processing. JSON is a common text format for sending structured information, such as {"name":"Shoes","quantity":2}. APIs must validate incoming data types, formats, lengths, allowed values, and user permissions rather than trusting client input.
+
+Reading: MDN, "An overview of HTTP" (accessed 2026)
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview
+Video: IBM Technology, "What is a REST API?" (publication year not verified)
+https://www.youtube.com/watch?v=lsMQRaeKNDk
+AI: OpenAI (ChatGPT, GPT-6), 2026. Research, concept checking, and writing revision.
+Additional verification:
+- Roy T. Fielding, "Architectural Styles and the Design of Network-based Software Architectures," 2000: https://ics.uci.edu/~fielding/pubs/dissertation/abstract.htm
+- OWASP, "API Security Top 10," 2023: https://api-security.owasp.org/editions/2023/en/0x11-t10/
+
+======================================================================
+5. INTERSECTION OF COBOL, SWIFT, APIs & DATABASES
+======================================================================
+
+COBOL, SWIFT, APIs, and databases all play important roles in the technological infrastructure used by financial institutions, hospitals, schools, and government agencies. COBOL continues to support many legacy applications that perform critical business functions, while databases store and organize the information these applications use. APIs allow older systems to communicate with modern applications without necessarily requiring organizations to replace their existing software. In international banking, SWIFT provides a standardized messaging network that allows financial institutions to exchange payment instructions, while COBOL applications and databases may handle the actual transaction processing and recordkeeping. In medical and academic settings, databases and APIs help connect older administrative systems with modern patient, enrollment, and student services; SWIFT is primarily relevant when international financial messaging is involved. The video "Modernizing COBOL: From Mainframe to API" explains how organizations can use application discovery and refactoring tools to separate business logic from complicated legacy applications and make those services accessible through APIs. This approach allows organizations to preserve the value of existing COBOL code while improving efficiency, maintenance, and opportunities for AI integration. According to the U.S. Government Accountability Office (2025), the federal government spends more than $100 billion annually on IT and cyber-related investments, and agencies have typically reported spending approximately 80% on operating and maintaining existing IT systems. The GAO's 2025 review also identified 11 especially critical legacy systems in need of modernization, seven of which had known cybersecurity vulnerabilities (GAO, 2025). Modernizing legacy systems is important because outdated technology can increase cybersecurity risks, maintenance costs, and dependence on specialized skills. However, replacing these systems can be expensive and risky, making gradual modernization through APIs and refactoring a practical alternative for many organizations.
+
+Reading: U.S. Government Accountability Office, "Agencies Need to Plan for Modernizing Critical Decades-Old Legacy Systems," July 17, 2025
+https://files.gao.gov/reports/GAO-25-107795/index.html
+Video: "Modernizing COBOL: From Mainframe to API" (publication year not verified; transcript supplied for this assignment)
+https://www.youtube.com/watch?v=-CI8hb-077E
+AI: OpenAI (ChatGPT, GPT-6), 2026. Research, concept checking, and writing revision.
+
+======================================================================
+AI DISCLOSURE
+======================================================================
+
+AI tool used for all five topics: OpenAI (ChatGPT, GPT-6), November 2026.
+Purpose: To clarify technical concepts, check claims against sources, and revise my own research summaries into coherent paragraphs. The assigned readings and videos were used as primary learning materials. Figures cited from historical sources are not automatically current figures. Estimates (such as the 2022 COBOL line-count survey) are labeled as estimates. Unknown statistics (such as the worldwide average age of COBOL engineers or an exact number of systems using REST APIs) have not been invented.

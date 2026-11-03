@@ -1,0 +1,852 @@
+AI REVIEW TRANSCRIPT - Lesson 1 Balerica Legacy Bank Runbook
+Student: Darian George
+Tool: Claude (claude.ai). Two real chats, in date order:
+  1. "Scaffold for assignment"  (Oct 30-31, 2026, 52 turns)
+  2. "Homework run 4 with whoami" (Nov 1, 2026, 20 turns)
+
+Notes on how this was exported:
+- Message text is word for word from the chats. Times are my local time (Asia/Taipei).
+- Removed: automatic system notices that were attached to my messages, and the
+  assistant's file-writing / tool-call blocks (marked "[tool activity omitted]").
+- Where I attached a file or screenshot with no text, it is marked "[attachment]".
+- My own public IP address was replaced with <my-ip>. Arrows and long dashes were typed as plain ASCII (->, -). Nothing else was changed.
+- No keys, passwords or tokens were pasted into either chat.
+
+==========================================================================
+PART 1 - Chat: "Scaffold for assignment"
+==========================================================================
+
+--- Fri 2026-10-30 11:20 ---
+Human: I need to work on this today:
+[attachment]
+
+Claude: Heads up: the deadline for this lab was Tuesday, Oct 27 at 12:00 PM Central, which has already passed. I'd message Theo or the FB chat early today to ask whether late work is accepted. Do that first, since it affects everything else.
+
+**Order for today**
+
+1. **Group file (mandatory, ~15 min).** Without it you fail the week, so do it first.
+   - Create `group_Darian.txt` with Spotter, Teammates, and Days + Times filled in. Your study schedule already says to share your timeline with your group and spotter, so you may have a team to list.
+   - If you don't have a team yet, post in the FB chat now and ask who needs a spotter.
+2. **Repo setup (~20 min).** Create `seir-foundations-homework/module1/lab0_basics/` and `lab0.5_basics_contd/` with `README.md`, the group file, and `screenshots/`. Move your earlier homework in. Your Lab 5 notes show you're comfortable with the branch, commit, push and PR flow, so use it here too.
+3. **Maarek quizzes (~45 min).** Take the Section 5 and Section 6 quizzes and save the screenshots as `Maarek_Section5_quiz.jpg` and `Maarek_Section6_quiz.jpg`. Skip the videos you've already watched. Section 3 has no quiz.
+4. **Reading and videos (as time allows).**
+   - Bahga pp. 25-53 and 69-80.
+   - SAA Exam Guide chapters 1 and 4.
+   - AWS Developer chapters 2 and 5.
+   - The EC2 instance types video and the two Git videos.
+5. **Extra credit (BAM_1.1-1.3), if you have energy.** All three can come from one EC2 instance:
+   - SSH in from your Mac's terminal and run `whoami` and `date` for BAM_1.1.
+   - Edit the page through User Data for BAM_1.2.
+   - Run `cat` on the `user_data` script for BAM_1.3. I believe it's at `/var/lib/cloud/instance/scripts/part-001`, but check on your instance.
+   - Terminate the instance afterward. Your budget alerts are only alarms, not a cutoff.
+
+**Things to watch**
+- Don't show your `.pem` key, SSO tokens, or access keys in any screenshot.
+- Your study schedule has CCP Practice Exam #1 on Sat Oct 31, so I'd finish steps 1-3 today and leave tomorrow clear for it.
+
+I can draft the repo structure, the lab README, and the group file template now. For the group file I just need your spotter and teammates' names and your meeting times. Do you want me to start with those?
+
+--- Fri 2026-10-30 12:08 ---
+Human: sorry, I already turned this one in. Let me send the new one
+
+Claude: No problem, glad Lab 0.5 is already in. Send over the new one whenever you're ready.
+
+--- Fri 2026-10-30 12:09 ---
+Human: [attachment: Week 3 assignment and Balerica Legacy Bank runbook]
+
+Claude: Got both files: the Week 3 assignment and the Balerica Legacy Bank runbook.
+
+**Deadline conflict.** The header says due Mon 11/02, but the body says Tue Nov 3 at 12:00 PM CST. That's Wed Nov 4, 2:00 AM in Taipei. Treat Monday Nov 2 as the real deadline unless Theo confirms otherwise.
+
+**The rule that decides your schedule.** You need 7 fresh-instance runs, with at most 3 screenshots per local day (Taipei time). Four in one day is an automatic fail. Here is a split that fits your calendar, including tomorrow's CCP practice exam:
+
+| Day | Work |
+|---|---|
+| Fri Oct 30 (today) | Runs 1-3, plus the `git_clone.jpg` and COBOL return-code screenshots (rc0/4/8/12 and ledger decode) on one of them |
+| Sat Oct 31 | Run 4 and 5 around the CCP practice exam, then start the AI review file |
+| Sun Nov 1 | Runs 6 and 7. Do the BAM extras on one of them if you want them. |
+| Mon Nov 2 | Quizzes (Maarek Sections 21, 23, 25), the research file, spotter file, README table and notes, then push |
+
+**Per-run reminders**
+- Run the ID line right before `uvicorn`, with `TZ='Asia/Taipei'`. If `ec2-metadata` is missing, install it with `sudo dnf install -y ec2-utils`.
+- Start each run from a new instance launched by hand, not from a launch template or AMI.
+- Terminate each instance when you finish, then check for leftover volumes and Elastic IPs.
+- Record the instance ID and boot time (UTC) in your notes right away. They must match the screenshot exactly.
+- For the COBOL practice, use TXN IDs that start with your initials, for example `TXN-DG-0001`.
+
+**Two catches**
+- Your repo must be public for `git_clone.jpg`, because you can't put a GitHub token on the server.
+- The runbook's Student Challenge still mentions the Bedrock Model Access page, which the assignment says is retired. That's a good "AI or doc was out of date" example for your review file.
+
+**Files in the `lesson1_ec2` folder**
+- `README.md` with the 7-run table
+- `lab1_notes.md`
+- `ai_review_YourName.txt`
+- `spotter_YourName.txt`
+- `AI_enabled_study_lab1.0.txt`
+- the screenshots
+
+I can scaffold the folder now, with the README table, the `lab1_notes.md` template for each run, the COBOL and BAM sections, and the spotter file layout. I'd leave the AI review and research content for you to write, since "how I checked it" is graded most heavily. Want me to start with the scaffold?
+
+--- Fri 2026-10-30 12:11 ---
+Human: yes, start with the scaffold
+
+Claude: [tool activity omitted: created the lesson1_ec2 folder and five template files - README.md, lab1_notes.md, spotter_DarianGeorge.txt, ai_review_DarianGeorge.txt, AI_enabled_study_lab1.0.txt - and sent them to me]
+
+I've built the `lesson1_ec2` scaffold and attached the five files. Place them in `module1/lesson1_ec2/` in your homework repo, and put the screenshots in a `screenshots/` folder next to them (I didn't send that folder).
+
+- **`README.md`**: has the 7-run table with the columns Theo asked for, your ID line with `Asia/Taipei`, and sections for the COBOL return codes, `git_clone`, the quizzes and the BAM extras. I pre-filled the run dates with my planned split (3 today, 2 tomorrow, 2 on Sunday). Change them to match what you actually do.
+- **`lab1_notes.md`**: has one block per run with a slot for an output line only that run would have. It also has the COBOL practice section (return codes 0/4/8/12, the `cut -c` decode, your journal lines), the BAM section, and the "Mistakes I made" and "Commands I now know by heart" lists. The TXN examples use `TXN-DG-` for your initials.
+- **`spotter_DarianGeorge.txt`**: has the two halves so you can cross-check against your spotter's file.
+- **`ai_review_DarianGeorge.txt`**: has the five-question format with "how I checked it" and a slot for the place the AI was wrong.
+- **`AI_enabled_study_lab1.0.txt`**: has the six research topics with their reading, video and AI prompts.
+
+Everything marked `TODO` is for you to fill in after each run. Copy instance IDs and boot times straight from your screenshots, because a mismatch means the run doesn't count.
+
+I'd start Run 1 now and fill in its table row and notes block before launching Run 2. Do you want me to turn the runbook's Steps 0-4 into a one-page cheat sheet to keep beside the terminal?
+
+--- Sat 2026-10-31 11:59 ---
+Human: I need to SSH into an instance again; where do I start?
+
+Claude: Here's the path from nothing to a working SSH session. It assumes Amazon Linux, since the runbook uses `dnf` and `ec2-user`.
+
+**1. Launch a fresh instance by hand (console)**
+- Don't use a launch template or AMI for the lab runs, because those don't count.
+- Choose Amazon Linux 2023 and a free-tier-eligible type such as t3.micro or t2.micro.
+- Choose your existing key pair, or create a new one and download the `.pem` once.
+- In the security group, allow SSH (port 22) from **My IP**. Later, add Custom TCP 8000 from My IP if you want to try `/docs` in the browser.
+
+**2. Get the address**
+- Open EC2 -> Instances -> your instance, wait for **Running** and 2/2 status checks.
+- Copy the **Public IPv4 DNS** (it goes in your README table) and the Instance ID.
+
+**3. Connect from your Mac terminal**
+```bash
+chmod 400 ~/path/to/your-key.pem
+ssh -i ~/path/to/your-key.pem ec2-user@YOUR-PUBLIC-DNS
+```
+Type `yes` at the host fingerprint prompt the first time. Each new instance has a new fingerprint, so you'll see it on every run.
+
+**4. Once you're in**
+Run Step 0 from the runbook (`whoami`, `pwd`), then continue through Steps 1-4. Before starting `uvicorn`, run the ID line:
+```bash
+whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+```
+If `ec2-metadata` is missing, run `sudo dnf install -y ec2-utils`.
+
+**If it fails**
+- **Connection timed out:** your IP probably changed. Edit the security group's SSH rule and reselect My IP.
+- **Permission denied (publickey):** use `ec2-user@` rather than `root@` or `ubuntu@`, and make sure you're pointing at the right `.pem`.
+- **"UNPROTECTED PRIVATE KEY FILE":** run `chmod 400` on the key.
+
+**Today's count.** Yesterday's runs count toward Oct 30, so you have a fresh limit of 3 for today. The plan was 2 today, and never more than 3. Terminate each instance when you finish its run.
+
+Where are you in the process? If you hit an error, paste the exact message and I'll help.
+
+--- Sat 2026-10-31 12:02 ---
+Human: I am just starting today, I will do 3 runs today, 2 tomorrow, and 2 Monday. I am waiting for my instance to initialize now
+
+Claude: That plan works, and it's exactly the 3-day minimum: 3 runs today (Oct 31), 2 on Sun Nov 1, and 2 on Mon Nov 2. Because there's no slack, a failed or botched run on Monday would leave you short. Tuesday Nov 3 in Taipei is a backup day if Theo's later deadline holds, but I wouldn't count on it. To protect yourself:
+
+- **Don't exceed 3 today.** A fourth screenshot on the same Taipei-time day is an automatic fail, even if an earlier run was bad. Don't screenshot a run you're unsure of until it's clean.
+- **Watch midnight.** Taipei midnight splits the days, so a run that straddles it could land on the wrong date.
+- **Update the README dates.** I pre-filled runs 1-3 as Oct 30, so change them to 2026-10-31, runs 4-5 to 2026-11-01, and runs 6-7 to 2026-11-02.
+
+Once the instance shows 2/2 checks passed, copy the Instance ID and Public IPv4 DNS into your Run 1 row, then SSH in and start at Step 0. Tell me when you're in, or paste any error you hit.
+
+--- Sat 2026-10-31 12:04 ---
+Human: 18.234.234.41 and the key name is BankAppRun1_KP.pem is in downloads
+
+Claude: Here are the commands for your Mac terminal:
+
+```bash
+chmod 400 ~/Downloads/BankAppRun1_KP.pem
+ssh -i ~/Downloads/BankAppRun1_KP.pem ec2-user@18.234.234.41
+```
+
+Type `yes` at the fingerprint prompt. When you see the `[ec2-user@ip-... ~]$` prompt, you're in. Then run Step 0 from the runbook (`whoami`, `pwd`).
+
+Two things to check:
+- **Public IPv4 DNS.** The README table needs the DNS name, not just the IP. It's in the console under your instance's details and looks like `ec2-18-234-234-41.compute-1.amazonaws.com`.
+- **If it times out.** Edit the security group's port 22 rule and reselect **My IP**.
+
+Tell me when you're in, or paste any error.
+
+--- Sat 2026-10-31 12:07 ---
+Human: I will run whoami and pwd now
+
+Claude: Go ahead. You should see `ec2-user` from `whoami` and `/home/ec2-user` from `pwd`. If either looks different, paste it here.
+
+After that, go to Step 1, which installs git and clones the course repo. Run one command at a time, as the runbook says:
+
+```bash
+sudo dnf install -y git
+git clone https://github.com/BalericaAI/SEIR-Foundations.git
+ls SEIR-Foundations
+```
+
+Step 2 is the installer. It takes a few minutes, so let it finish before you type anything else.
+
+--- Sat 2026-10-31 12:09 ---
+Human: before we go further, metadata is missing, doesn't show Taipei/Asia time. How do I make sure it shows that?
+
+Claude: There are two separate problems here.
+
+**1. `ec2-metadata` is missing**
+
+```bash
+sudo dnf install -y ec2-utils
+ec2-metadata -i
+```
+The second command should print `instance-id: i-xxxxxxxx`.
+
+**2. Taipei time**
+
+The server runs in UTC, and you don't need to change that. The `TZ='Asia/Taipei'` part of the ID line converts only the `date` output, and only for that one command:
+
+```bash
+whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+```
+
+The `date` output should end in `CST` and be 8 hours ahead of UTC. For example, 04:10 UTC shows as 12:10 CST. Check these:
+- Type it exactly as written, with the `TZ='Asia/Taipei'` directly before `date` and no space after the `=`.
+- Use straight quotes. If you copied from a chat or document, curly quotes can break it. Retype the quotes by hand if you see an error.
+- If it prints the time in UTC or errors with an unknown timezone, run `ls /usr/share/zoneinfo/Asia/Taipei`. If the file is missing, run `sudo dnf install -y tzdata` and try again.
+
+**Leave `uptime -s` alone.** It prints the boot time in the server's own time, which is UTC. Your README table wants the boot time in UTC, so that value goes straight into the table. The `date` line is in Taipei time so Theo can see which day each run belongs to.
+
+If the `date` line still doesn't show Asia/Taipei time, paste the output and I'll help.
+
+--- Sat 2026-10-31 12:12 ---
+Human: [pasted terminal output]
+Last login: Wed Oct 28 22:19:48 on console
+
+➜  ~ chmod 400 ~/Downloads/BankAppRun1_KP.pem
+➜  ~ ssh -i ~/Downloads/BankAppRun1_KP.pem ec2-user@18.234.234.41
+The authenticity of host '18.234.234.41 (18.234.234.41)' can't be established.
+[SSH host fingerprint line omitted]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '18.234.234.41' (ED25519) to the list of known hosts.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+[Amazon Linux 2023 and SEIR FOUNDATIONS ASCII banners omitted]
+
+CHEWBACCA OPERATIONS CENTER  |  Welcome to your first EC2!
+-----------------------------------------------------------------------
+Hostname      : ip-172-31-28-117.ec2.internal
+Uptime        : up 10 minutes
+CPU           : 0% busy (approx.) | 2 vCPU(s)
+Load average  : 0.00 0.02 0.02 (1, 5, 15 minutes)
+Memory        : 183Mi used / 1.9Gi total
+Root disk     : 1.7G used / 8.0G total (21% full)
+Instance ID   : i-09aaec9b88f188650
+Instance type : t3.small
+AWS zone      : us-east-1c
+-----------------------------------------------------------------------
+COST REALITY CHECK
+  CPU at 1% does NOT mean free. Charges depend on instance type,
+  running time, storage, network usage, and your AWS account benefits.
+  Check AWS Billing > Free Tier and Cost Explorer. Set a budget alert.
+  Stop the instance when the lab is done (EBS storage can still cost).
+-----------------------------------------------------------------------
+RRRAAAWWWRRR! Chewbacca says: Verify first. Panic later.
+Run seir-dashboard anytime to see this again.
+
+[ec2-user@ip-172-31-28-117 ~]$ whoami
+ec2-user
+[ec2-user@ip-172-31-28-117 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-28-117 ~]$ [200~sudo dnf install -y ec2-utils
+-bash: [200~sudo: command not found
+[ec2-user@ip-172-31-28-117 ~]$ ec2-metadata -i~whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+ec2-metadata: invalid option -- '~'
+ec2-metadata: invalid option -- 'w'
+Terminating...
+[ec2-user@ip-172-31-28-117 ~]$ sudo dnf install -y ec2-utils
+ec2-metadata -i
+Last metadata expiration check: 0:13:42 ago on Sat Oct 31 03:57:35 2026.
+Package ec2-utils-2.3.0-1.amzn2023.0.1.noarch is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+instance-id: i-09aaec9b88f188650
+[ec2-user@ip-172-31-28-117 ~]$
+
+Claude: You're in. The earlier failures weren't a missing tool or a timezone problem.
+
+**What happened**
+- `ec2-utils` was already installed, and `ec2-metadata -i` works (`i-09aaec9b88f188650`).
+- The `[200~` and `~` junk in your commands is paste garbage: the terminal's bracketed-paste markers leaked into the command line. That also glued two commands together (`ec2-metadata -i~whoami && ...`), which caused the "invalid option" errors.
+
+**Fix**
+Turn that feature off for this session, then run the ID line:
+
+```bash
+printf '\e[?2004l'
+```
+
+Then run this one command (paste is fine after the fix, or type it):
+
+```bash
+whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+```
+
+You should see four lines:
+- `ec2-user`
+- a date ending in `CST`, about 8 hours ahead of UTC (the server is at roughly 04:10 UTC now, so Taipei should read about 12:1x)
+- `instance-id: i-09aaec9b88f188650`
+- the boot time, around `2026-10-31 03:5x:xx`
+
+If it prints cleanly, that's the format Theo wants. For this run, the ID line has to be on screen right before `uvicorn` starts, so you'll run it again at Step 4.
+
+For your README row, the Instance ID is `i-09aaec9b88f188650` and the boot time (UTC) comes from the `uptime -s` line. The banner shows this instance is a t3.small in us-east-1c, which is fine for the lab.
+
+Next is Step 1: `sudo dnf install -y git`, then `git clone ...`. Paste the ID-line output here if anything looks off.
+
+--- Sat 2026-10-31 12:24 ---
+Human: do I need to screenshot any of this?
+[attachment: terminal output of the installer and COBOL tests]
+
+Claude: [tool activity omitted: read the attached terminal output]
+
+Not yet, and you don't need any of the install output. You're at the end of Step 3, and everything so far went cleanly: `Installation complete.`, Alice's lookup returning rc 0 and rc 4, and `TXN0001` POSTED.
+
+Every screenshot in this assignment must show the ID line, so I'd skip anything you've already run. These are the screenshots to take, in order:
+
+1. **`lab1_run1.jpg` (Step 4):** Run these in order:
+   ```bash
+   cd /opt/balerica-bank
+   source venv/bin/activate
+   whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+   uvicorn app.main:app --host 0.0.0.0 --port 8000
+   ```
+   The screenshot must show the ID line output and `Application startup complete.` together. This one counts as the run, and the ID line has to come right before `uvicorn`.
+
+2. **COBOL screenshots (do these on this instance, since it's your first of the three runs today):** Each one needs the ID line visible too, so run it first, then the COBOL command. The server has to keep running in Window 1, so open a second terminal for these.
+   - `cobol_rc0.jpg`: a successful payment with your own TXN ID, such as `./cobol/bin/payment_post TXN-DG-0001 100001 10.00 USD TEST` followed by `echo $?`
+   - `cobol_rc4.jpg`: lookup of `999999`, followed by `echo $?`
+   - `cobol_rc8.jpg`: a zero-amount payment with a `TXN-DG-` ID, followed by `echo $?`
+   - `cobol_rc12.jpg`: run `account_lookup` from the wrong folder (for example from `~`), followed by `echo $?`
+   - `cobol_ledger_decode.jpg`: `cut -c` on `data/accounts.dat` to decode Alice's balance
+
+   Your `TXN0001` payment doesn't use your initials, so it won't count for these screenshots.
+
+3. **`git_clone.jpg` (later):** Clone *your own* homework repo on an instance, then list `module1`. It needs the ID line too, and the repo must be public.
+
+When you've captured everything for Run 1, copy the **Public IPv4 DNS** from the console into your README row and record the instance in your notes before you terminate it. Tell me when the server is up, or paste anything unexpected.
+
+--- Sat 2026-10-31 12:32 ---
+Human: I don't need this screenshot?
+[attachment: screenshot of the Balerica /docs page in the browser]
+
+Claude: Correct, you don't need it. The browser `/docs` page is Step 7 of the runbook, and the assignment doesn't list a screenshot for it. Every screenshot has to show the ID line, and this one can't.
+
+It does give you the Public IPv4 DNS for your README row: `ec2-18-234-234-41.compute-1.amazonaws.com`. Copy it from the address bar. It also confirms the server is up, so Step 4 is working and the port 8000 rule is open.
+
+The required screenshot is still the terminal one for `lab1_run1.jpg`, with the ID line output and `Application startup complete.` visible together. Have you taken that one yet? If so, the COBOL screenshots are next, each with the ID line visible.
+
+--- Sat 2026-10-31 12:33 ---
+Human: this one work for lab1_run1.jpg ?
+[attachment: terminal screenshot]
+
+Claude: No, that one doesn't work for `lab1_run1.jpg`. It shows a good ID line, but the screenshot must also show `Application startup complete.` from uvicorn. The ID line must be run right before starting `uvicorn`, and this one was taken before the install.
+
+Run this in Window 1 for the run screenshot:
+
+```bash
+cd /opt/balerica-bank
+source venv/bin/activate
+whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+Take the screenshot once you see `Application startup complete.`, with the ID line output visible above it. The ID line should show `ec2-user`, a Taipei `CST` date, `i-09aaec9b88f188650`, and the boot time.
+
+Two other notes:
+- **Keep the screen clean.** Your current terminal has the `[200~` paste errors in it. Run `clear` before the ID line so the screenshot is easy to read.
+- **Boot-time check.** The boot time must fall within 24 hours before the screenshot. Your boot time of 03:57 UTC works if you take it today.
+
+--- Sat 2026-10-31 12:34 ---
+Human: run these one line at a time or all at the same time?
+
+Claude: Run them one at a time. The runbook says to paste one command at a time and read what comes back, and it's also the easiest way to catch a problem early.
+
+1. `clear`
+2. `cd /opt/balerica-bank`
+3. `source venv/bin/activate`. Your prompt should now start with `(venv)`.
+4. The ID line: `whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s`. That's a single command even though it has `&&` in it, so run it as one line.
+5. `uvicorn app.main:app --host 0.0.0.0 --port 8000`. Take the screenshot as soon as you see `Application startup complete.`
+
+Do steps 4 and 5 close together, because the ID line is supposed to come right before `uvicorn`. Make sure the ID line output is still visible on screen above the uvicorn lines. Uvicorn only prints a few lines at startup, so it should be.
+
+--- Sat 2026-10-31 12:35 ---
+Human: current terminal script won't let me clear
+
+Claude: Clearing the screen is only for readability and isn't a requirement, so don't spend time on it. Try these in order:
+
+1. Press **Ctrl+L**, which clears the screen in most terminals.
+2. If `clear` printed an error such as `TERM environment variable not set`, run `export TERM=xterm-256color` first, then `clear`.
+3. Run `printf '\033c'` to reset the screen.
+
+If none of those work, skip it. The screenshot only needs the ID line output and `Application startup complete.` visible together. Anything above them can stay, as long as the two required parts are on screen and readable.
+
+If `clear` prints a specific message, paste it and I can say what's wrong.
+
+--- Sat 2026-10-31 12:37 ---
+Human: yeah, it won't let me out of it with clear or control + L
+
+Claude: That's expected. Uvicorn is still running in that window and holds the terminal, so `clear`, `cd` and `source` are being typed into the void. They show up as text at the bottom but never run.
+
+**Fix:**
+1. Press **Ctrl+C** to stop the server. You should get a shutdown message and your `(venv)` prompt back.
+2. Run `clear`.
+3. Run the ID line: `whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s`
+4. Run `uvicorn app.main:app --host 0.0.0.0 --port 8000`
+
+You're still in the venv and in `/opt/balerica-bank`, so you can skip `cd` and `source`.
+
+**Why you need to redo it:** your current screen would have failed the check anyway. The ID line wasn't run before uvicorn, so it isn't on screen. The `Invalid HTTP request` warnings are probably just stray traffic hitting port 8000 and aren't a problem. A fresh start will also push them off the screen.
+
+After you take the `lab1_run1.jpg` screenshot, press Ctrl+C again. The COBOL return-code screenshots don't need the server, so you can do them in the same window. Each one needs the ID line visible first.
+
+--- Sat 2026-10-31 12:41 ---
+Human: [attachment: terminal screenshot]
+
+Claude: Yes, that one works for `lab1_run1.jpg`. It shows all the required parts together: the ID line output (`ec2-user`, the Taipei `CST` date, the instance ID and the boot time) followed by `Application startup complete.`
+
+Save it as `lab1_run1.jpg`, and record these for Run 1:
+
+- **Instance ID:** `i-09aaec9b88f188650`. In the README table and the screenshot, make sure the 0s and 9s are copied exactly.
+- **Boot time (UTC):** `2026-10-31 03:57:06`. It's about 42 minutes before the screenshot, so it's well inside the 24-hour window.
+- **Public IPv4 DNS:** `ec2-18-234-234-41.compute-1.amazonaws.com`
+- **Date:** 2026-10-31, Asia/Taipei
+- **Unique output line for your notes:** `INFO:     Started server process [36778]`
+
+Then press Ctrl+C to stop the server and do the COBOL screenshots in the same window. Each one needs the ID line visible first, and you should use TXN IDs that start with `TXN-DG-`.
+
+Don't terminate this instance until the COBOL screenshots are done. Afterward, terminate it and check for leftover volumes and Elastic IPs. Then launch a fresh instance for Run 2, which gives you 2 runs left for today.
+
+--- Sat 2026-10-31 12:46 ---
+Human: the instructions say to open a new terminal window or doesn't matter?
+
+Claude: It doesn't matter for the screenshots. A new window or the same one is fine, as long as the ID line is visible in each one.
+
+The runbook's Step 5 does use a second window, because it needs the server running while you `curl` it. The COBOL programs don't use the web server at all. They read and write files directly, so you can press Ctrl+C in Window 1 and run them there.
+
+If you'd rather leave the bank running, open a second terminal and SSH in again:
+
+```bash
+ssh -i ~/Downloads/BankAppRun1_KP.pem ec2-user@18.234.234.41
+```
+
+Then run `cd /opt/balerica-bank` and the ID line, then your COBOL command. I'd stop the server and stay in one window, since it keeps each screenshot clean and you only have to manage a single terminal.
+
+--- Sat 2026-10-31 12:47 ---
+Human: I need to run it the way they are saying because at some point they may ask me to do it in class on livestream so might as well get used to it this way
+
+Claude: That's a good reason. The runbook's flow is the one to practice. Keep the bank running in Window 1 and use a second terminal for everything else.
+
+**Window 1:** leave uvicorn running. Don't type anything there.
+
+**Window 2:** open a new terminal tab on your Mac and SSH in again:
+```bash
+ssh -i ~/Downloads/BankAppRun1_KP.pem ec2-user@18.234.234.41
+```
+Then run these in order:
+```bash
+cd /opt/balerica-bank
+whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+```
+After that, run each COBOL command and `echo $?`, rerunning the ID line before each screenshot:
+- **rc 0:** `./cobol/bin/payment_post TXN-DG-0001 100001 10.00 USD TEST-1`
+- **rc 4:** `./cobol/bin/account_lookup 999999`
+- **rc 8:** `./cobol/bin/payment_post TXN-DG-0002 100001 0.00 USD TEST-2`
+- **rc 12:** `cd ~` and run `./../../opt/balerica-bank/cobol/bin/account_lookup 100001`, or run the program by its full path from the wrong folder. The goal is the file-not-found failure from the troubleshooting table (`FILE-STATUS=35`).
+- **Ledger decode:** `cut -c` on `data/accounts.dat`
+
+The runbook also has Step 5 (`curl` to `/status` and `/chewbacca`) and Step 6 (the SWIFT traffic generator) for Window 2. Step 6 would also show you the Window 1 server logging each payment. You don't need a screenshot of those, but they're good livestream practice.
+
+When you rehearse for class, also practice:
+- starting the server again after a Ctrl+C
+- telling which window you're in
+- recovering when you type into the wrong window
+
+If a command in Window 2 does something unexpected, paste the exact output and I'll help.
+
+--- Sat 2026-10-31 12:58 ---
+Human: Student Challenge: in the Bedrock console, enable a Claude model (Model Access), then set `BEDROCK_MODEL_ID` before starting uvicorn. Newer Claude models need the inference profile id (it starts with `us.`), not the base model id.
+
+Claude: That's the runbook's Student Challenge, and it's the same task as extra credit **BAM_2.1**. The assignment's version is newer than the runbook's, so follow the assignment where they differ. I'd leave it for later today or tomorrow, after your Run 1 COBOL screenshots and Runs 2 and 3. It needs a running instance and some AWS setup, and it only earns extra credit.
+
+**Where the runbook is out of date**
+- The **Model Access page has been retired**. Models are enabled by default, but Claude needs a one-time usage form in the Bedrock console.
+- The instance needs an **IAM role with Bedrock access**, with **no access keys on the instance**.
+
+**The three requirements** (all must be true, or `/ask` quietly stays on `"source": "offline-knowledge-base"`)
+1. **An IAM role attached to the instance.** The runbook points to `iam/PERMISSIONS.md` in the lesson's `API` folder. After cloning, run `find ~/SEIR-Foundations -name PERMISSIONS.md` to locate it. It has the policy and the AWS CLI commands. Your SSO user has AdministratorAccess, so you can create the role yourself.
+2. **`AWS_REGION` set before uvicorn.** It must match the region where you've enabled Claude. The code defaults to `us-east-1`, which is also where your instance is.
+3. **`BEDROCK_MODEL_ID` set to the inference profile ID.** It starts with `us.`. Look it up in the Bedrock console under inference profiles, since I'd rather not give you an ID from memory that may be out of date.
+
+You would then start uvicorn like this:
+```bash
+export AWS_REGION=us-east-1
+export BEDROCK_MODEL_ID=<the us. inference profile ID>
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+**What to record for BAM_2.1:** the IAM role name, the inference profile ID, and the full `/ask` response to a question only your ledger can answer, such as one about your own `TXN-DG-` ID. The screenshot also needs the ID line.
+
+Do you want to start on this after Run 1, or finish the COBOL screenshots first?
+
+--- Sat 2026-10-31 12:59 ---
+Human: yeah, this feels like something we can do tomorrow for sure. Let's do run number 2. I need to tear this instance down and start from scratch correct?
+
+Claude: Yes, terminate this one and launch a fresh instance by hand. Stopping it isn't enough, and the instance needs to be terminated.
+
+**Before you terminate, confirm you have:**
+- `lab1_run1.jpg` saved
+- the Run 1 row filled in (Instance ID, boot time, DNS, date)
+- the Run 1 notes block, including the `Started server process [36778]` line
+
+The COBOL screenshots don't have to come from Run 1. They can be done on any run instance from your table, so you can do them on Run 2 or 3 if you'd rather move on now. Just note which instance you used.
+
+**Tear down**
+1. In Window 1, press Ctrl+C to stop the server, and close the second terminal if you opened one.
+2. In the console go to EC2 -> Instances -> select it -> **Instance state -> Terminate**.
+3. Check that **Volumes** (EC2 -> Elastic Block Store) has nothing left over, and that **Elastic IPs** is empty.
+4. Mark Run 1 as terminated in the README table.
+
+**Start Run 2 from scratch**
+- Launch by hand from the console, not from your launch template. Template-launched instances don't count, but keep the template itself.
+- Use Amazon Linux 2023 again, with the same key pair and a security group that allows SSH (and 8000 if you want `/docs`) from My IP.
+- You'll get a new IP and DNS, so your SSH command changes. The host fingerprint prompt will appear again.
+
+**Run 2 sequence:**
+1. SSH in. Step 0: `whoami`, `pwd`.
+2. Step 1: `sudo dnf install -y git`, then the clone and `ls`.
+3. Step 2: the installer.
+4. Step 3: look around, and do the COBOL screenshots on this run if you want them done.
+5. Step 4: the ID line and `uvicorn`, then the `lab1_run2.jpg` screenshot.
+
+A new instance means `ec2-utils` may or may not be preinstalled. You saw it was already there last time, so you'll probably be fine. Tell me when it's launched, or paste any errors.
+
+--- Sat 2026-10-31 13:08 ---
+Human: are these the rules for the SG or that's not in the runbook? I'm looking at my class notes
+[attachment: security group rules screenshot]
+
+Claude: Only part of that is in the runbook.
+
+- **Custom TCP 8000 from My IP** is in the runbook. It's the Step 7 rule that lets your browser reach `/docs`.
+- **SSH 22 from anywhere (0.0.0.0/0)** isn't spelled out in the runbook, which just says you've already done the SSH part. The runbook assumes you can already SSH in, and your class notes probably set it up this way for the Lab 0 instance.
+- **HTTP 80 from anywhere** isn't needed for this lab. It looks left over from Lab 0, where the instance served a web page. The bank API runs on 8000, not 80.
+
+**What I'd change:**
+- Set **SSH to My IP** instead of anywhere. This is the safer habit. Port 22 open to the whole internet gets scanned constantly, and your key is the only protection. The downside is that if your IP changes, you'll get a connection timeout and have to update the rule.
+- **Delete the HTTP 80 rule**, since nothing uses it.
+- Keep **8000 from My IP**. It's already the right setting.
+
+Your notes may expect the open rules for a reason I can't see, so if your class said to use them, it's fine to follow that. The lab doesn't depend on either choice. Just don't leave port 22 open on an instance you keep around longer than a run.
+
+Once the SG is saved and the instance is launched, tell me when it reaches 2/2 checks and I'll walk you through Run 2.
+
+--- Sat 2026-10-31 20:19 ---
+Human: do we have the public dns information from run 1 by chance?
+
+Claude: Yes. It's in the browser screenshot you shared earlier, where the address bar read `ec2-18-234-234-41.compute-1.amazonaws.com:8000/docs`.
+
+- **Run 1 Public IPv4 DNS:** `ec2-18-234-234-41.compute-1.amazonaws.com`
+- **Instance ID:** `i-09aaec9b88f188650`
+- **Boot time (UTC):** `2026-10-31 03:57:06`
+- **Date:** 2026-10-31, Asia/Taipei
+
+Leave off the `:8000/docs` when you enter it in the README table.
+
+If you already terminated the instance, the DNS no longer works, but the name is still what Theo expects in the table. If anything about the name looks wrong, check it in the console under Instances -> the terminated instance's details, which stay visible for a short while after termination.
+
+--- Sat 2026-10-31 20:23 ---
+Human: and did I complete run 2 using claude or you're not sure?
+
+Claude: I'm not sure, and I can't confirm it from this conversation. The last thing I saw for Run 2 was your security group screenshot at 13:08, before you launched the instance. Since then I've seen no Run 2 instance ID, no ID-line output and no `Application startup complete.` screenshot. If you did Run 2 afterward, it may have been in another chat or on your own, and I can't see that.
+
+Here's how to confirm it yourself:
+- **`lab1_run2.jpg`:** Check that the file exists on your Mac and that it shows the ID line followed by `Application startup complete.`
+- **Console:** Check EC2 -> Instances for one you launched after Run 1 (it may show as terminated), and note its Instance ID.
+- **Boot time:** The `uptime -s` value in the screenshot should match what the console shows for that instance's launch time.
+
+If you paste the Run 2 screenshot or tell me the Instance ID, I can check it against the requirements and fill in the README row. If there's no screenshot, treat Run 2 as not done. It's now 20:23 Taipei time, so you still have time for Runs 2 and 3 tonight. The limit is 3 screenshots today, and you've used 1.
+
+--- Sat 2026-10-31 20:23 ---
+Human: can you check my device for a possible dns from lab1_run2? maybe it's on a screenshot
+
+Claude: [tool activity omitted: searched my Desktop and homework repo for screenshots, opened lab1_run2.jpg and lab1_run3.jpg, and read two other screenshots as text]
+
+Run 2's DNS isn't in any of your screenshots, but I did find Run 3's. I only searched your Desktop and your homework repo, and I didn't move or change any of your files.
+
+**What I found**
+
+| Run | Instance ID | Boot time (UTC) | Public DNS |
+|---|---|---|---|
+| 1 | `i-09aaec9b88f188650` | 2026-10-31 03:57:06 | `ec2-18-234-234-41.compute-1.amazonaws.com` |
+| 2 | `i-0d1e356de15287d43` | 2026-10-31 05:11:08 | **not found** |
+| 3 | `i-04191eab56a74583f` | 2026-10-31 10:50:42 | `ec2-3-85-63-238.compute-1.amazonaws.com` (probably, see below) |
+
+- **Run 2:** Your `lab1_run2.jpg` shows `Application startup complete.` with the right ID line. The server process ID for your notes is `[36629]`. None of your Desktop screenshots show Run 2's DNS. The 2:32 PM one is a terminal for the same instance, but it has no address in it.
+- **Run 3:** The screenshot from 8:15 PM shows a browser on `ec2-3-85-63-238.compute-1.amazonaws.com:8000/docs`. That fits Run 3 by timing (Run 3 was at 19:57), but the page doesn't show the instance ID, so please confirm it. The server process ID for your notes is `[37859]`.
+
+**How to get Run 2's DNS**
+- **Your terminal history.** Open Terminal and run `history | grep ssh`, or scroll up in the Run 2 window. Your SSH command has the IP. The DNS is always `ec2-` plus the IP with dashes instead of dots, then `.compute-1.amazonaws.com`. For example, `3.85.63.238` becomes `ec2-3-85-63-238.compute-1.amazonaws.com`.
+- **The AWS console.** Check EC2 -> Instances with the terminated instances shown. It may still be listed, but AWS usually blanks the public DNS after termination.
+
+Once you have Run 2's IP, I can fill in the README table for Runs 1-3.
+
+--- Sat 2026-10-31 20:26 ---
+Human: http://ec2-32-199-159-140.compute-1.amazonaws.com:8000/docs it's probably that one
+
+Claude: I'll use `ec2-32-199-159-140.compute-1.amazonaws.com` as Run 2's DNS. It's different from Run 1's and Run 3's, and your three runs each need a unique DNS name, so it fits.
+
+- **Run 1:** `ec2-18-234-234-41.compute-1.amazonaws.com`
+- **Run 2:** `ec2-32-199-159-140.compute-1.amazonaws.com`
+- **Run 3:** `ec2-3-85-63-238.compute-1.amazonaws.com`
+
+**It's still unverified.** The URL doesn't show which instance it belongs to, and neither does anything else I've found. The rule that matters is that Instance ID and boot time must exactly match the screenshot, and those come from your screenshots, so the DNS carries less risk. To be sure, run `history | grep ssh` in your Mac terminal and match each IP to its run. If Run 2's SSH command used `32.199.159.140`, you're confirmed.
+
+I can fill in the first three rows of the README table and the Run 1-3 blocks in `lab1_notes.md`, using the boot times and server process IDs from your screenshots. Do you want me to do that?
+
+==========================================================================
+PART 2 - Chat: "Homework run 4 with whoami"
+==========================================================================
+
+--- Sun 2026-11-01 09:27 ---
+Human: I need to do run 4 today. I will send you the raw data again. Remember for the whoami I also have to include time region of where I am actually (Asia/Taipei) etc. and then that has to be in the screenshot for my homework assignment. I will paste the runbook and the homework info page information as well. Thanks.
+[attachment: runbook and homework page]
+
+Claude: Got both files. Nothing to run yet, so here's the setup for Run 4.
+
+**Your ID line (Asia/Taipei):**
+
+```bash
+whoami && TZ='Asia/Taipei' date && ec2-metadata -i && uptime -s
+```
+
+If `ec2-metadata` isn't found, run `sudo dnf install -y ec2-utils` first, then the ID line.
+
+**Run 4 checklist**
+- Launch a brand-new instance from your launch template. Do Steps 0-4 by hand, and don't reuse an old instance or an AMI.
+- Run the ID line right before `uvicorn app.main:app --host 0.0.0.0 --port 8000`.
+- Take one screenshot (`lab1_run4.jpg`) showing both the ID line output and `Application startup complete.` The boot time must be before the screenshot and within 24 hours of it.
+- Stay at 3 lab-run screenshots or fewer for today, by Taipei date. A 4th on the same day fails the whole week. If any earlier run was also today, tell me and we'll recount.
+- Terminate the instance afterward and check for leftover volumes and Elastic IPs. Keep your launch template.
+
+**What to send me when you're ready**
+- The raw ID-line output and the `Public IPv4 DNS`.
+- Anything notable from the run: errors, fixes, and the uvicorn `Started server process [PID]` line. That PID is the exact output line that only this run would have, which the notes require.
+
+With that I'll fill in your Run 4 table row and the `lab1_notes.md` entry. The row needs the boot time converted to UTC, since `uptime -s` shows instance time.
+
+The page header says due Mon 11/02, but the deadline line says Tue 11/03 at 12:00 PM CST. That is Wed Nov 4, 2:00 AM in Taipei. I'd plan around the earlier date to be safe.
+
+--- Sun 2026-11-01 09:54 ---
+Human: this what I need to document as lab1_run4.jpg?
+[attachment: terminal screenshot]
+
+Claude: Yes, that works as `lab1_run4.jpg`. It meets each requirement:
+
+- **ID line:** `whoami`, the Taipei `date`, `instance-id` and `uptime -s` all show.
+- **Timing:** the ID line ran right before `uvicorn`, and `Application startup complete.` is visible.
+- **Boot window:** 09:44:36 Taipei is 01:44:36 UTC. The boot time of 01:13:49 UTC is 31 minutes earlier, so it is before the screenshot and well inside 24 hours.
+- **"CST":** that is Taipei's abbreviation, not US Central. The 09:44 reading matches your clock, so it's correct. Mention it in your notes in case a grader wonders.
+
+**Before you upload**
+- The file is a PNG. Export it as JPG (for example, Preview -> File -> Export), because the assignment requires `lab1_run4.jpg`.
+- Don't crop or edit it.
+- If you've already taken 3 lab-run screenshots today (Taipei date), stop here. A 4th on the same day fails the week.
+
+**Run 4 data for your table and notes** (check the instance ID against the screenshot character by character)
+
+| Run | Date | Time zone | Instance ID | Boot time (UTC) | Public IPv4 DNS | Screenshot | Terminated? |
+|---|---|---|---|---|---|---|---|
+| 4 | 2026-11-01 | Asia/Taipei | i-018d2f493c808d08d | 2026-11-01 01:13:49 | *(need from console)* | lab1_run4.jpg | *(after you terminate)* |
+
+For `lab1_notes.md`, the line only this run would have is `Started server process [36544]`.
+
+Send me the Public IPv4 DNS from the EC2 console. Also tell me any errors you hit and what you learned this run. I'll draft the Run 4 notes entry (at least 3 sentences) once I have those. After that, stop uvicorn with Ctrl+C, terminate the instance, and check for leftover volumes and Elastic IPs.
+
+--- Sun 2026-11-01 09:55 ---
+Human: this is run 1 on today, I did 3 yesterday
+
+Claude: Good, you're safe on the daily cap. Today is 1 screenshot, and yesterday's 3 fall on a different Taipei date. That makes Run 4 your first of the week's 7, with 3 done. Check that yesterday's three have a Taipei date of Oct 31 in their `date` output.
+
+You can do up to 2 more runs today (Runs 5 and 6), then Run 7 on a later day. Run 7 must be on a third separate day if Runs 1-3 were all on Oct 31, so plan it for Nov 2 or Nov 3. That works with the Nov 3 deadline. Remember the grader's deadline is Wed Nov 4, 2:00 AM Taipei, and the cap is 3 per day, so don't squeeze runs 5-7 into today.
+
+Still needed for Run 4's entry:
+- the Public IPv4 DNS from the console
+- any errors you hit and fixes
+- what you newly understood
+
+Send those and I'll draft the notes entry.
+
+--- Sun 2026-11-01 09:57 ---
+Human: ec2-54-196-163-84.compute-1.amazonaws.com , today I launched the instance directly in AWS with connect. So far, I've used terminal and VS Code and this is by the far the easiest way to do it. I also updated "pip" this time because I watched the video and it said to do so. I hadn't done that in previous runs. They said its called "vulnerability remediation".
+
+Claude: Here's the Run 4 table row and notes entry.
+
+**Table row**
+
+| Run | Date | Time zone | Instance ID | Boot time (UTC) | Public IPv4 DNS | Screenshot | Terminated? |
+|---|---|---|---|---|---|---|---|
+| 4 | 2026-11-01 | Asia/Taipei | i-018d2f493c808d08d | 2026-11-01 01:13:49 | ec2-54-196-163-84.compute-1.amazonaws.com | lab1_run4.jpg | No (update after you terminate) |
+
+**`lab1_notes.md` entry**
+
+```markdown
+## Run 4 - i-018d2f493c808d08d
+
+This run I connected to the new instance straight from the EC2 console with
+the Connect button (browser-based), instead of using my local terminal or VS
+Code. It was by far the easiest connection method so far, because there is no
+key file or SSH command to manage. I also upgraded pip inside the venv for the
+first time, because the lecture video recommended it as vulnerability
+remediation (keeping tools patched so known security flaws are not carried
+into the server). I hit no errors this run, so the installer and uvicorn
+worked on the first try. I newly understood that the connection method only
+changes how I reach the server, not what the server does, and that updating
+packages is a routine security habit.
+
+Exact line only this run has:
+INFO:     Started server process [36544]
+
+Timing: the ID line printed 09:44:36 CST (Asia/Taipei) and boot time
+2026-11-01 01:13:49 (UTC), about 31 minutes before the screenshot.
+```
+
+**Check before you submit**
+- Confirm "no errors" is true. If anything went wrong, even a small warning, add it and the fix.
+- Add the exact pip command you ran. I assumed it was `pip install --upgrade pip` in the venv, so fix it if it differs.
+- I described pip upgrading as patching tools so security flaws aren't carried forward, which is the idea behind remediation. Reword it if the video put it differently.
+- The DNS shows `compute-1`, so this instance is in us-east-1, while your Identity Center is us-east-2. When you terminate, check for leftover volumes and Elastic IPs in **us-east-1**. Switching regions in the console is easy to miss.
+
+Do you want me to save the table row and this entry to the SEIR 8 project so they're in one place for runs 5-7?
+
+--- Sun 2026-11-01 09:58 ---
+Human: /opt/balerica-bank/venv/bin/python3 -m pip install --upgrade pip
+
+Claude: That command is slightly different from what I guessed, and it's the better way to do it. Here's the updated sentence for your Run 4 entry:
+
+```markdown
+I also upgraded pip for the first time, using
+`/opt/balerica-bank/venv/bin/python3 -m pip install --upgrade pip`, because the
+lecture video recommended it as vulnerability remediation (keeping tools
+patched so known security flaws are not carried into the server).
+```
+
+Calling pip as `python3 -m pip` through the venv's own Python guarantees you upgrade the venv's pip. A bare `pip` could hit the system copy instead. Worth adding to your "Commands I now know by heart" list.
+
+Don't paste the full command with the absolute path as proof of anything in the screenshot. It's not part of lab1_run4.jpg, and the screenshot you showed is unchanged.
+
+Two things before you wrap up this run:
+- If the pip upgrade printed a "Successfully installed pip-X.Y.Z" line, you can add that version to the notes as extra proof.
+- Then Ctrl+C the server, terminate the instance, and check for leftover volumes and Elastic IPs in us-east-1.
+
+Send me the pip version line if you have it, or tell me when you're ready for Run 5.
+
+--- Sun 2026-11-01 11:28 ---
+Human: INFO:     Started server process [36544]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     <my-ip>:51935 - "GET / HTTP/1.1" 200 OK
+INFO:     <my-ip>:51935 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     <my-ip>:51935 - "GET /docs HTTP/1.1" 200 OK
+INFO:     <my-ip>:51935 - "GET /openapi.json HTTP/1.1" 200 OK what does 404 not found mean for me?
+
+Claude: It means nothing is wrong. Here is what each line tells you:
+
+- **`GET /favicon.ico` -> 404 Not Found:** Your browser automatically asks every site for a small tab icon at `/favicon.ico`. The Balerica app has no route for that, so FastAPI says "not found." It only affects the tab icon and has no effect on the bank or the lab.
+- **`GET /` -> 200 OK, `GET /docs` -> 200 OK, `GET /openapi.json` -> 200 OK:** These are the real results. The server answered, and the `/docs` page (the interactive API console from Step 7) loaded fully.
+- **`<my-ip>`:** That's your own public IP. It shows your browser reached port 8000 from outside, so your Security Group rule for port 8000 works.
+
+Status code families are worth knowing for the APIs part of the homework: 2xx means success, 4xx means the request was wrong or the thing doesn't exist (the client's problem), and 5xx means the server failed. A 404 is a 4xx. Note that the mainframe return code 4 ("account not found") is a separate system from HTTP codes, though the idea is similar.
+
+This also gives you a real error-style line for Run 4. You can add it to the notes entry without calling it a failure:
+
+```markdown
+Browser test: from my laptop, GET /docs returned 200 OK. The browser's
+automatic GET /favicon.ico returned 404 Not Found, which is harmless: the
+app has no favicon route. This confirmed port 8000 was open in my Security
+Group.
+```
+
+I'd leave your IP in the log only if you're fine sharing it, since the notes go in your GitHub repo. Replace it with `<my-ip>` if you'd rather not.
+
+--- Sun 2026-11-01 11:36 ---
+Human: did i give you this already? ec2-54-196-163-84.compute-1.amazonaws.com
+
+Claude: Yes, you gave me that at 09:57 as Run 4's Public IPv4 DNS. It's already in the table row I drafted:
+
+| Run | Date | Time zone | Instance ID | Boot time (UTC) | Public IPv4 DNS | Screenshot | Terminated? |
+|---|---|---|---|---|---|---|---|
+| 4 | 2026-11-01 | Asia/Taipei | i-018d2f493c808d08d | 2026-11-01 01:13:49 | ec2-54-196-163-84.compute-1.amazonaws.com | lab1_run4.jpg | No (update after you terminate) |
+
+The only open item in that row is the "Terminated?" column. Once you've stopped uvicorn, terminated the instance and checked for leftover volumes and Elastic IPs in us-east-1, change it to "Yes."
+
+--- Sun 2026-11-01 11:37 ---
+Human: I terminated this one. I will do run 5 next
+
+Claude: Good. Update the table row to "Yes" under Terminated?:
+
+| Run | Date | Time zone | Instance ID | Boot time (UTC) | Public IPv4 DNS | Screenshot | Terminated? |
+|---|---|---|---|---|---|---|---|
+| 4 | 2026-11-01 | Asia/Taipei | i-018d2f493c808d08d | 2026-11-01 01:13:49 | ec2-54-196-163-84.compute-1.amazonaws.com | lab1_run4.jpg | Yes |
+
+Before you start Run 5, quickly check us-east-1 for leftover Volumes and Elastic IPs. If both are empty, you're clean.
+
+Run 5 is your 2nd screenshot today, so you can still do Run 6 today. Run 7 then has to go on another day, which is fine before the deadline. For Run 5, use a brand-new instance, run the ID line with `Asia/Taipei` right before `uvicorn`, and send me the same data: the screenshot, the Public IPv4 DNS, any errors and what you learned.
+
+--- Sun 2026-11-01 20:16 ---
+Human: ec2-34-228-142-55.compute-1.amazonaws.com
+[attachment: screenshot]
+
+Claude: Stop before using this one: it isn't a Run 5 screenshot.
+
+- **Same instance as Run 4:** The `instance-id` is `i-018d2f493c808d08d`, identical to Run 4. Each run needs a unique Instance ID, so this can't count as a new run.
+- **DNS doesn't match:** The browser screenshot shows `ec2-54-196-163-84...`, which is Run 4's DNS, not the `ec2-34-228-142-55...` you just sent.
+- **Earlier session, same instance:** This ID line says 09:37:35 and uvicorn PID 36050, while the Run 4 screenshot says 09:44:36 and PID 36544. You started uvicorn twice on the same instance and I'm looking at the first start.
+
+You also have two screenshots of Run 4's instance, and their boot times differ by one second (`01:13:50` here vs `01:13:49` in the other). Instance ID and boot time must match the screenshot exactly, so pick one to submit as `lab1_run4.jpg` and use its values in the table. The 09:44:36 one is the one I already put in the row. Don't submit both as separate runs.
+
+Your new DNS, `ec2-34-228-142-55.compute-1.amazonaws.com`, presumably belongs to the real Run 5 instance. Send me its screenshot. It must show a different Instance ID, with the ID line (Asia/Taipei) printed right before `Application startup complete.`
+
+Check that the new instance was launched fresh from your template, not restarted or cloned from Run 4's. Also confirm Run 4's instance is still terminated.
+
+--- Sun 2026-11-01 20:17 ---
+Human: sorry, this one
+[attachment: screenshot]
+
+Claude: This one is valid for Run 5. Save it as `lab1_run5.jpg`.
+
+- **New instance:** `i-079a7a57042656719` is different from Run 4, and the private IP (`ip-172-31-18-54`) differs too.
+- **ID line:** `whoami`, the Taipei `date`, `instance-id` and `uptime -s` all show, and the ID line ran right before `uvicorn`.
+- **Startup line:** `Application startup complete.` is visible.
+- **Boot window:** 20:11:12 Taipei is 12:11:12 UTC. The boot time of 10:36:06 UTC is about 1.5 hours earlier, so it is before the screenshot and inside 24 hours.
+
+**Table row**
+
+| Run | Date | Time zone | Instance ID | Boot time (UTC) | Public IPv4 DNS | Screenshot | Terminated? |
+|---|---|---|---|---|---|---|---|
+| 5 | 2026-11-01 | Asia/Taipei | i-079a7a57042656719 | 2026-11-01 10:36:06 | ec2-34-228-142-55.compute-1.amazonaws.com | lab1_run5.jpg | No (update after you terminate) |
+
+The line only this run would have is `INFO:     Started server process [39342]`.
+
+For today's cap, you have Run 4 and Run 5 submitted. Don't submit the earlier 09:37 screenshot as a separate run. That leaves room for one more, Run 6, today, and then Run 7 on another day.
+
+For the notes entry I need three things:
+- Any errors you hit and how you fixed them.
+- Whether you did the pip upgrade again this run.
+- What you newly understood.
+
+Then stop uvicorn, terminate the instance, and check for leftover volumes and Elastic IPs in us-east-1.
+
+==========================================================================
+END OF TRANSCRIPT
+==========================================================================
