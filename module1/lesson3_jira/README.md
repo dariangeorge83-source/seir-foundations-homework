@@ -17,7 +17,7 @@ All stories and tasks are parented directly to the epic `SEIRDG-1`.
 
 | Jira key | Work type | Summary | Story points |
 |---|---|---|---:|
-| SEIRDG-1 | Epic | A Day in My Shoes | 25 |
+| SEIRDG-1 | Epic | A Day in My Shoes | 0 |
 | SEIRDG-2 | Story | Morning Routine & Mindfulness | 3 |
 | SEIRDG-3 | Story | Commute & Arrival at School | 2 |
 | SEIRDG-4 | Story | Professional Responsibilities at AST | 5 |
