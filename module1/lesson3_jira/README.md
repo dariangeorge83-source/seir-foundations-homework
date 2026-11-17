@@ -17,11 +17,11 @@ Completed chapters 1–3 of *Head First Agile* before building the Jira space.
 
 ## Jira Evidence Table
 
-The Epic represents one full day from waking to bedtime and has no story point estimate. All seven Stories and 20 Tasks have `SEIRDG-1` as their Parent, a Story point estimate, and a description of at least two sentences, verified against the Jira CSV export.
+All stories and tasks are parented directly to the epic `SEIRDG-1`. 
 
 | Jira key | Work type | Summary | Story points |
 |---|---|---|---:|
-| SEIRDG-1 | Epic | A Day in My Shoes | — |
+| SEIRDG-1 | Epic | A Day in My Shoes | 0 |
 | SEIRDG-2 | Story | Morning Routine & Mindfulness | 3 |
 | SEIRDG-3 | Story | Commute & Arrival at School | 2 |
 | SEIRDG-4 | Story | Professional Responsibilities at AST | 5 |
